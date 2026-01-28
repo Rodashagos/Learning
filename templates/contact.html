@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Contact - AB Company{% endblock %}
+
+{% block content %}
+<section class="contact-section">
+    <div class="container">
+        <h1>Contact Us</h1>
+        <p class="intro-text">Get in touch with us today. We're here to help!</p>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+                <div class="info-item">
+                    <h3>Email</h3>
+                    <p>info@abcompany.com</p>
+                </div>
+                <div class="info-item">
+                    <h3>Address</h3>
+                    <p>123 Business Street </p>
+                <div class="info-item">
+                    <h3>Business Hours</h3>
+                    <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h2>Send us a Message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+                <div id="formMessage"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+    };
+    
+    fetch('{{ url_for("submit_contact") }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        const messageDiv = document.getElementById('formMessage');
+        if (data.status === 'success') {
+            messageDiv.innerHTML = '<p class="success">' + data.message + '</p>';
+            document.getElementById('contactForm').reset();
+        } else {
+            messageDiv.innerHTML = '<p class="error">Error submitting form. Please try again.</p>';
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('formMessage').innerHTML = '<p class="error">Error submitting form. Please try again.</p>';
+    });
+});
+</script>
+{% endblock %}
