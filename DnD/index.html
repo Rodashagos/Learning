@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D Character Sheet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        /* ===== PARAMETERS ===== */
+        :root {
+            /* Section 1: Character Info */
+            --char-name: "Aragorn";
+            --class-level: "Ranger 5";
+            --race: "Human";
+            --background: "Ranger";
+            --alignment: "Neutral Good";
+            --player-name: "John Doe";
+            --experience-points: "6500";
+
+            /* Section 2: Ability Scores */
+            --strength-value: "15";
+            --strength-modifier: "+2";
+            --dexterity-value: "18";
+            --dexterity-modifier: "+4";
+            --constitution-value: "14";
+            --constitution-modifier: "+2";
+            --intelligence-value: "12";
+            --intelligence-modifier: "+1";
+            --wisdom-value: "16";
+            --wisdom-modifier: "+3";
+            --charisma-value: "13";
+            --charisma-modifier: "+1";
+
+            /* Section 3: Proficiency & Saves */
+            --proficiency-bonus: "+2";
+            --saving-throw-1: "+2";
+            --saving-throw-2: "+4";
+            --saving-throw-3: "+2";
+            --saving-throw-4: "+1";
+            --saving-throw-5: "+3";
+            --saving-throw-6: "+1";
+
+            /* Section 3: Skills */
+            --skill-1: "+4";
+            --skill-2: "+4";
+            --skill-3: "+2";
+            --skill-4: "+1";
+            --skill-5: "+3";
+            --skill-6: "+1";
+            --skill-7: "+3";
+            --skill-8: "+3";
+            --skill-9: "+1";
+            --skill-10: "+2";
+            --skill-11: "+2";
+            --skill-12: "+1";
+            --skill-13: "+1";
+            --skill-14: "+3";
+            --skill-15: "+3";
+            --skill-16: "+1";
+            --skill-17: "+1";
+            --skill-18: "+4";
+        }
+
+        .character-sheet {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border: 2px solid #333;
+        }
+
+        /* ===== SECTION 1: CHARACTER INFO (Top) ===== */
+        .section-1 {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+            gap: 10px;
+            padding: 15px;
+            border-bottom: 2px solid #333;
+        }
+
+        .info-field {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #999;
+            padding: 8px;
+        }
+
+        .info-label {
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* ===== SECTION 2 & 3 CONTAINER ===== */
+        .sections-2-3-container {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 10px;
+            padding: 15px;
+            min-height: 500px;
+        }
+
+        /* ===== SECTION 2: ABILITY SCORES (Left) ===== */
+        .section-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(6, 1fr);
+            gap: 10px;
+        }
+
+        .ability-box {
+            border: 1px solid #999;
+            padding: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .ability-title {
+            grid-column: 1 / -1;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #999;
+            padding-bottom: 5px;
+        }
+
+        .ability-value,
+        .ability-modifier {
+            border: 1px solid #ccc;
+            padding: 5px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .ability-value-label,
+        .ability-modifier-label {
+            font-size: 8px;
+            text-transform: uppercase;
+            color: #666;
+            text-align: center;
+        }
+
+        /* ===== SECTION 3: PROFICIENCY, SAVES, SKILLS (Right) ===== */
+        .section-3 {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto 1fr;
+            gap: 10px;
+        }
+
+        .proficiency-box,
+        .saving-throws-box,
+        .skills-box {
+            border: 1px solid #999;
+            padding: 10px;
+        }
+
+        .box-title {
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #999;
+            padding-bottom: 5px;
+        }
+
+        .proficiency-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 60px;
+        }
+
+        .proficiency-value {
+            border: 2px solid #333;
+            padding: 10px 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .saving-throws-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .save-item {
+            border: 1px solid #ccc;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .save-number {
+            font-size: 9px;
+            color: #666;
+            margin-bottom: 3px;
+        }
+
+        .save-value {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .skills-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            max-height: 350px;
+            overflow-y: auto;
+        }
+
+        .skill-item {
+            border: 1px solid #ccc;
+            padding: 4px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .skill-number {
+            font-size: 8px;
+            color: #666;
+        }
+
+        .skill-value {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="character-sheet">
+        <!-- SECTION 1: CHARACTER INFO -->
+        <div class="section-1">
+            <div class="info-field">
+                <span class="info-label">Character Name</span>
+                <span class="info-value">Aragorn</span>
+            </div>
+            <div class="info-field">
+                <span class="info-label">Class & Level</span>
+                <span class="info-value">Ranger 5</span>
+            </div>
+            <div class="info-field">
+                <span class="info-label">Race</span>
+                <span class="info-value">Human</span>
+            </div>
+            <div class="info-field">
+                <span class="info-label">Background</span>
+                <span class="info-value">Ranger</span>
+            </div>
+            <div class="info-field">
+                <span class="info-label">Alignment</span>
+                <span class="info-value">Neutral Good</span>
+            </div>
+            <div class="info-field">
+                <span class="info-label">Player Name</span>
+                <span class="info-value">John Doe</span>
+            </div>
+        </div>
+
+        <div class="sections-2-3-container">
+            <!-- SECTION 2: ABILITY SCORES -->
+            <div class="section-2">
+                <!-- Strength -->
+                <div class="ability-box">
+                    <div class="ability-title">Strength</div>
+                    <div>
+                        <div class="ability-value">15</div>
+                        <div class="ability-value-label">Value</div>
+                    </div>
+                    <div>
+                        <div class="ability-modifier">+2</div>
+                        <div class="ability-modifier-label">Modifier</div>
+                    </div>
+                </div>
+
+                <!-- Dexterity -->
+                <div class="ability-box">
+                    <div class="ability-title">Dexterity</div>
+                    <div>
+                        <div class="ability-value">18</div>
+                        <div class="ability-value-label">Value</div>
+                    </div>
+                    <div>
+                        <div class="ability-modifier">+4</div>
+                        <div class="ability-modifier-label">Modifier</div>
+                    </div>
+                </div>
+
+                <!-- Constitution -->
+                <div class="ability-box">
+                    <div class="ability-title">Constitution</div>
+                    <div>
+                        <div class="ability-value">14</div>
+                        <div class="ability-value-label">Value</div>
+                    </div>
+                    <div>
+                        <div class="ability-modifier">+2</div>
+                        <div class="ability-modifier-label">Modifier</div>
+                    </div>
+                </div>
+
+                <!-- Intelligence -->
+                <div class="ability-box">
+                    <div class="ability-title">Intelligence</div>
+                    <div>
+                        <div class="ability-value">12</div>
+                        <div class="ability-value-label">Value</div>
+                    </div>
+                    <div>
+                        <div class="ability-modifier">+1</div>
+                        <div class="ability-modifier-label">Modifier</div>
+                    </div>
+                </div>
+
+                <!-- Wisdom -->
+                <div class="ability-box">
+                    <div class="ability-title">Wisdom</div>
+                    <div>
+                        <div class="ability-value">16</div>
+                        <div class="ability-value-label">Value</div>
+                    </div>
+                    <div>
+                        <div class="ability-modifier">+3</div>
+                        <div class="ability-modifier-label">Modifier</div>
+                    </div>
+                </div>
+
+                <!-- Charisma -->
+                <div class="ability-box">
+                    <div class="ability-title">Charisma</div>
+                    <div>
+                        <div class="ability-value">13</div>
+                        <div class="ability-value-label">Value</div>
+                    </div>
+                    <div>
+                        <div class="ability-modifier">+1</div>
+                        <div class="ability-modifier-label">Modifier</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 3: PROFICIENCY, SAVES, SKILLS -->
+            <div class="section-3">
+                <!-- Proficiency Bonus -->
+                <div class="proficiency-box">
+                    <div class="box-title">Proficiency Bonus</div>
+                    <div class="proficiency-content">
+                        <div class="proficiency-value">+2</div>
+                    </div>
+                </div>
+
+                <!-- Saving Throws -->
+                <div class="saving-throws-box">
+                    <div class="box-title">Saving Throws</div>
+                    <div class="saving-throws-content">
+                        <div class="save-item">
+                            <div class="save-number">STR (1)</div>
+                            <div class="save-value">+2</div>
+                        </div>
+                        <div class="save-item">
+                            <div class="save-number">DEX (2)</div>
+                            <div class="save-value">+4</div>
+                        </div>
+                        <div class="save-item">
+                            <div class="save-number">CON (3)</div>
+                            <div class="save-value">+2</div>
+                        </div>
+                        <div class="save-item">
+                            <div class="save-number">INT (4)</div>
+                            <div class="save-value">+1</div>
+                        </div>
+                        <div class="save-item">
+                            <div class="save-number">WIS (5)</div>
+                            <div class="save-value">+3</div>
+                        </div>
+                        <div class="save-item">
+                            <div class="save-number">CHA (6)</div>
+                            <div class="save-value">+1</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="skills-box">
+                    <div class="box-title">Skills</div>
+                    <div class="skills-content">
+                        <div class="skill-item"><div class="skill-number">1</div><div class="skill-value">+4</div></div>
+                        <div class="skill-item"><div class="skill-number">2</div><div class="skill-value">+4</div></div>
+                        <div class="skill-item"><div class="skill-number">3</div><div class="skill-value">+2</div></div>
+                        <div class="skill-item"><div class="skill-number">4</div><div class="skill-value">+1</div></div>
+                        <div class="skill-item"><div class="skill-number">5</div><div class="skill-value">+3</div></div>
+                        <div class="skill-item"><div class="skill-number">6</div><div class="skill-value">+1</div></div>
+                        <div class="skill-item"><div class="skill-number">7</div><div class="skill-value">+3</div></div>
+                        <div class="skill-item"><div class="skill-number">8</div><div class="skill-value">+3</div></div>
+                        <div class="skill-item"><div class="skill-number">9</div><div class="skill-value">+1</div></div>
+                        <div class="skill-item"><div class="skill-number">10</div><div class="skill-value">+2</div></div>
+                        <div class="skill-item"><div class="skill-number">11</div><div class="skill-value">+2</div></div>
+                        <div class="skill-item"><div class="skill-number">12</div><div class="skill-value">+1</div></div>
+                        <div class="skill-item"><div class="skill-number">13</div><div class="skill-value">+1</div></div>
+                        <div class="skill-item"><div class="skill-number">14</div><div class="skill-value">+3</div></div>
+                        <div class="skill-item"><div class="skill-number">15</div><div class="skill-value">+3</div></div>
+                        <div class="skill-item"><div class="skill-number">16</div><div class="skill-value">+1</div></div>
+                        <div class="skill-item"><div class="skill-number">17</div><div class="skill-value">+1</div></div>
+                        <div class="skill-item"><div class="skill-number">18</div><div class="skill-value">+4</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
