@@ -59,6 +59,46 @@ def main():
         out_path.write_text(out_html, encoding="utf-8")
         print(f"Wrote {out_path.name}")
 
+    # Update index.html to reflect generated job pages
+    index_path = base / "index.html"
+    if index_path.exists():
+        index_text = index_path.read_text(encoding="utf-8")
+        marker = '<h1>Job Listings</h1>'
+        mpos = index_text.find(marker)
+        if mpos == -1:
+            print("Could not find job listings marker in index.html; skipping update")
+            return
+
+        start = mpos + len(marker)
+        body_index = index_text.rfind('</body>')
+        container_close = index_text.rfind('</div>', 0, body_index)
+        head = index_text[:start]
+        tail = index_text[container_close:]
+
+        listings = []
+        for job in jobs:
+            jid = job.get('id')
+            if not jid:
+                continue
+            title = job.get('title', '')
+            location = job.get('location', '')
+            desc = job.get('description', '')
+            href = f"job_pages/job_page_{jid}.html"
+            entry = (
+                f'<a class="job-link" href="{href}">\n'
+                f'  <div class="job-listing">\n'
+                f'    <div class="job-title">{title}</div>\n'
+                f'    <div class="job-location">{location}</div>\n'
+                f'    <div class="job-description">{desc}</div>\n'
+                f'  </div>\n'
+                f'</a>'
+            )
+            listings.append(entry)
+
+        new_index = head + '\n\n' + '\n\n'.join(listings) + '\n\n' + tail
+        index_path.write_text(new_index, encoding='utf-8')
+        print('Updated index.html with current job listings')
+
 
 if __name__ == "__main__":
     main()

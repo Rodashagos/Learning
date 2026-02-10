@@ -6,6 +6,7 @@
       "location": "📍 New York, NY",
       "salary": "$85,000 — $110,000",
       "description": "Design beautiful and intuitive user interfaces for our web and mobile applications. Experience with Figma required.",
+      "tags": ["figma", "ux", "ui", "design", "prototyping"],
       "fullDescription": "As a UX/UI Designer you'll craft elegant, user-centered designs for both web and mobile platforms. You will work closely with product managers, engineers, and other designers to turn product goals into intuitive interfaces. Strong experience with Figma and a solid understanding of design systems is required.\n\nResponsibilities include running user research and usability testing, producing wireframes and high-fidelity prototypes, and collaborating across teams to ensure consistent visual design. We're looking for someone with a keen eye for detail, strong communication skills, and a passion for improving the user experience."
     },
     {
@@ -14,6 +15,7 @@
       "location": "📍 San Francisco, CA",
       "salary": "$130,000 — $160,000",
       "description": "We're looking for an experienced frontend developer to join our team. Must have 5+ years of experience with React and modern web technologies.",
+      "tags": ["react", "javascript", "css", "html", "frontend"],
       "fullDescription": "The Senior Frontend Developer will lead the implementation of complex UI features and mentor junior engineers. You'll work on performance optimization, component design, and cross-team collaboration to deliver high-quality user experiences. Expertise in React, modern JavaScript, and frontend tooling is required.\n\nYou will be responsible for designing scalable component architectures, improving site performance, and partnering with designers to translate prototypes into production-ready code. Strong communication skills and experience with testing and CI/CD pipelines are a plus."
     },
     {
@@ -22,6 +24,7 @@
       "location": "📍 Remote",
       "salary": "$110,000 — $140,000",
       "description": "Join our backend team to build scalable APIs and microservices. Experience with Python, Node.js, or Java preferred.",
+      "tags": ["python", "nodejs", "java", "api", "microservices"],
       "fullDescription": "Join our backend team to design and maintain scalable APIs and microservices that power our platform. You will work closely with frontend teams to define contracts and ensure reliability, security, and observability. Experience with Python, Node.js, or Java and cloud infrastructure is preferred.\n\nKey responsibilities include building resilient services, optimizing database interactions, implementing monitoring and alerting, and participating in architecture discussions. We value engineers who write clean, well-tested code and contribute to a culture of continuous improvement."
     }
   ]
