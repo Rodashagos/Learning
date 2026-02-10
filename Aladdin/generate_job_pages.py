@@ -5,7 +5,7 @@ import shutil
 
 def main():
     base = Path(__file__).parent
-    vm_path = base / "viewmodel2.json"
+    vm_path = base / "viewmodel.json"
     template_path = base / "job_page_template.html"
 
     out_dir = base / "job_pages"
@@ -47,10 +47,19 @@ def main():
         else:
             full_html = ""
 
+        # build tags html
+        tags = job.get('tags', []) or []
+        if tags:
+            tags_html = ' '.join(f'<span class="tag">{t}</span>' for t in tags)
+            tags_html = f'<div class="job-tags">{tags_html}</div>'
+        else:
+            tags_html = ''
+
         out_html = template_text.replace("{{title}}", title)
         out_html = out_html.replace("{{location}}", location)
         out_html = out_html.replace("{{salary}}", salary)
         out_html = out_html.replace("{{fullDescription}}", full_html)
+        out_html = out_html.replace("{{tags}}", tags_html)
 
         # adjust stylesheet path for pages placed in job_pages/
         out_html = out_html.replace('href="job-styles.css"', 'href="../job-styles.css"')
@@ -84,12 +93,20 @@ def main():
             location = job.get('location', '')
             desc = job.get('description', '')
             href = f"job_pages/job_page_{jid}.html"
+            # build tags markup for index listing
+            job_tags = job.get('tags', []) or []
+            if job_tags:
+                tags_html = ' '.join(f'<span class="tag">{t}</span>' for t in job_tags)
+                tags_html = f'\n        <div class="job-tags">{tags_html}</div>'
+            else:
+                tags_html = ''
+
             entry = (
                 f'<a class="job-link" href="{href}">\n'
                 f'  <div class="job-listing">\n'
                 f'    <div class="job-title">{title}</div>\n'
                 f'    <div class="job-location">{location}</div>\n'
-                f'    <div class="job-description">{desc}</div>\n'
+                f'    <div class="job-description">{desc}</div>{tags_html}\n'
                 f'  </div>\n'
                 f'</a>'
             )
