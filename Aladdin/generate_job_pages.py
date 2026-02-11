@@ -6,7 +6,7 @@ from datetime import datetime
 
 def main():
     base = Path(__file__).parent
-    vm_path = base / "viewmodel.json"
+    vm_path = base / "viewmodel3.json"
     template_path = base / "job_page_template.html"
     index_template_path = base / "index_template.html"
 
