@@ -96,6 +96,19 @@ def main():
         index_path.unlink()
     
     index_template_text = index_template_path.read_text(encoding="utf-8")
+
+    # Build unique tag list for sidebar
+    unique_tags = set()
+    for job in jobs:
+        for tag in job.get("tags", []) or []:
+            if isinstance(tag, str) and tag.strip():
+                unique_tags.add(tag.strip())
+    sorted_tags = sorted(unique_tags, key=lambda t: t.lower())
+    if sorted_tags:
+        tag_items = "\n".join(f"  <li>{t}</li>" for t in sorted_tags)
+        tag_list_html = f"<ul class=\"tag-list\">\n{tag_items}\n</ul>"
+    else:
+        tag_list_html = "<p>No tags available</p>"
     
     listings = []
     for job in jobs:
@@ -128,6 +141,7 @@ def main():
     job_listings_html = '\n\n'.join(listings) if listings else '<!-- No job listings available -->'
     
     new_index = index_template_text.replace("{{jobListings}}", job_listings_html)
+    new_index = new_index.replace("{{tagList}}", tag_list_html)
     index_path.write_text(new_index, encoding='utf-8')
     print('Generated index.html from template')
 

@@ -20,14 +20,53 @@
     
     .container {
       background-color: #eef2ff;
-      max-width: 800px;
+      max-width: 1100px;
       margin: 0 auto;
+      padding: 20px;
+      border-radius: 10px;
     }
     
     h1 {
       color: #333;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       text-align: center;
+    }
+
+    .layout {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .sidebar {
+      width: 240px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 20px;
+    }
+
+    .sidebar h2 {
+      font-size: 1.1em;
+      color: #092685;
+      margin-bottom: 12px;
+    }
+
+    .tag-list {
+      list-style: none;
+    }
+
+    .tag-list li {
+      margin-bottom: 8px;
+      color: #444;
+      font-size: 0.95em;
+    }
+
+    .content {
+      flex: 1;
+      min-width: 0;
     }
     
     .job-listing {
@@ -64,14 +103,34 @@
       color: #555;
       line-height: 1.6;
     }
+
+    @media (max-width: 900px) {
+      .layout {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Job Listings</h1>
+    <div class="layout">
+      <aside class="sidebar">
+        <h2>Tags</h2>
+        {{tagList}}
+      </aside>
+      <main class="content">
 
 {{jobListings}}
 
-</div>
+      </main>
+    </div>
+
+  </div>
 </body>
 </html>
