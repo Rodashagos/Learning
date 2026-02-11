@@ -60,8 +60,30 @@
 
     .tag-list li {
       margin-bottom: 8px;
-      color: #444;
+    }
+
+    .tag-button {
+      width: 100%;
+      text-align: left;
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      color: #374151;
+      padding: 8px 10px;
+      border-radius: 6px;
       font-size: 0.95em;
+      cursor: pointer;
+    }
+
+    .tag-button:hover {
+      background: #e8ebf7;
+      border-color: #c7d2fe;
+    }
+
+    .tag-button.is-active {
+      background: #dbe7ff;
+      border-color: #9db5ff;
+      color: #0f2d86;
+      font-weight: 600;
     }
 
     .content {
@@ -75,6 +97,10 @@
       margin-bottom: 20px;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .job-link.is-hidden {
+      display: none;
     }
     
     .job-link {
@@ -123,26 +149,27 @@
       <aside class="sidebar">
         <h2>Tags</h2>
         <ul class="tag-list">
-  <li>api</li>
-  <li>css</li>
-  <li>design</li>
-  <li>figma</li>
-  <li>frontend</li>
-  <li>html</li>
-  <li>java</li>
-  <li>javascript</li>
-  <li>microservices</li>
-  <li>nodejs</li>
-  <li>prototyping</li>
-  <li>python</li>
-  <li>react</li>
-  <li>ui</li>
-  <li>ux</li>
+  <li><button class="tag-button is-active" data-tag="all">All</button></li>
+  <li><button class="tag-button" data-tag="api">api</button></li>
+  <li><button class="tag-button" data-tag="css">css</button></li>
+  <li><button class="tag-button" data-tag="design">design</button></li>
+  <li><button class="tag-button" data-tag="figma">figma</button></li>
+  <li><button class="tag-button" data-tag="frontend">frontend</button></li>
+  <li><button class="tag-button" data-tag="html">html</button></li>
+  <li><button class="tag-button" data-tag="java">java</button></li>
+  <li><button class="tag-button" data-tag="javascript">javascript</button></li>
+  <li><button class="tag-button" data-tag="microservices">microservices</button></li>
+  <li><button class="tag-button" data-tag="nodejs">nodejs</button></li>
+  <li><button class="tag-button" data-tag="prototyping">prototyping</button></li>
+  <li><button class="tag-button" data-tag="python">python</button></li>
+  <li><button class="tag-button" data-tag="react">react</button></li>
+  <li><button class="tag-button" data-tag="ui">ui</button></li>
+  <li><button class="tag-button" data-tag="ux">ux</button></li>
 </ul>
       </aside>
       <main class="content">
 
-<a class="job-link" href="job_pages/job_page_3.html">
+<a class="job-link" href="job_pages/job_page_3.html" data-tags="python|nodejs|java|api|microservices">
   <div class="job-listing">
     <div class="job-title">Backend Engineer</div>
     <div class="job-location">📍 Remote</div>
@@ -151,7 +178,7 @@
   </div>
 </a>
 
-<a class="job-link" href="job_pages/job_page_2.html">
+<a class="job-link" href="job_pages/job_page_2.html" data-tags="react|javascript|css|html|frontend">
   <div class="job-listing">
     <div class="job-title">Senior Frontend Developer</div>
     <div class="job-location">📍 San Francisco, CA</div>
@@ -160,7 +187,7 @@
   </div>
 </a>
 
-<a class="job-link" href="job_pages/job_page_1.html">
+<a class="job-link" href="job_pages/job_page_1.html" data-tags="figma|ux|ui|design|prototyping">
   <div class="job-listing">
     <div class="job-title">UX/UI Designer</div>
     <div class="job-location">📍 New York, NY</div>
@@ -173,5 +200,44 @@
     </div>
 
   </div>
+  <script>
+    (function () {
+      var buttons = document.querySelectorAll(".tag-button");
+      var jobLinks = document.querySelectorAll(".job-link");
+
+      function setActive(button) {
+        buttons.forEach(function (btn) {
+          btn.classList.toggle("is-active", btn === button);
+        });
+      }
+
+      function normalizeTag(tag) {
+        return (tag || "").trim().toLowerCase();
+      }
+
+      function filterByTag(tag) {
+        var normalized = normalizeTag(tag);
+        jobLinks.forEach(function (link) {
+          var tags = link.getAttribute("data-tags") || "";
+          var tagList = tags.split("|").filter(Boolean);
+          var shouldShow = normalized === "all" || tagList.indexOf(normalized) !== -1;
+          link.classList.toggle("is-hidden", !shouldShow);
+        });
+      }
+
+      buttons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          var tag = button.getAttribute("data-tag") || "all";
+          setActive(button);
+          filterByTag(tag);
+        });
+      });
+
+      var defaultButton = document.querySelector('.tag-button[data-tag="all"]');
+      if (defaultButton) {
+        setActive(defaultButton);
+      }
+    })();
+  </script>
 </body>
 </html>

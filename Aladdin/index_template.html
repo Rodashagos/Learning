@@ -60,8 +60,30 @@
 
     .tag-list li {
       margin-bottom: 8px;
-      color: #444;
+    }
+
+    .tag-button {
+      width: 100%;
+      text-align: left;
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      color: #374151;
+      padding: 8px 10px;
+      border-radius: 6px;
       font-size: 0.95em;
+      cursor: pointer;
+    }
+
+    .tag-button:hover {
+      background: #e8ebf7;
+      border-color: #c7d2fe;
+    }
+
+    .tag-button.is-active {
+      background: #dbe7ff;
+      border-color: #9db5ff;
+      color: #0f2d86;
+      font-weight: 600;
     }
 
     .content {
@@ -75,6 +97,10 @@
       margin-bottom: 20px;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .job-link.is-hidden {
+      display: none;
     }
     
     .job-link {
@@ -132,5 +158,44 @@
     </div>
 
   </div>
+  <script>
+    (function () {
+      var buttons = document.querySelectorAll(".tag-button");
+      var jobLinks = document.querySelectorAll(".job-link");
+
+      function setActive(button) {
+        buttons.forEach(function (btn) {
+          btn.classList.toggle("is-active", btn === button);
+        });
+      }
+
+      function normalizeTag(tag) {
+        return (tag || "").trim().toLowerCase();
+      }
+
+      function filterByTag(tag) {
+        var normalized = normalizeTag(tag);
+        jobLinks.forEach(function (link) {
+          var tags = link.getAttribute("data-tags") || "";
+          var tagList = tags.split("|").filter(Boolean);
+          var shouldShow = normalized === "all" || tagList.indexOf(normalized) !== -1;
+          link.classList.toggle("is-hidden", !shouldShow);
+        });
+      }
+
+      buttons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          var tag = button.getAttribute("data-tag") || "all";
+          setActive(button);
+          filterByTag(tag);
+        });
+      });
+
+      var defaultButton = document.querySelector('.tag-button[data-tag="all"]');
+      if (defaultButton) {
+        setActive(defaultButton);
+      }
+    })();
+  </script>
 </body>
 </html>

@@ -1,0 +1,95 @@
+{
+  "jobs": [
+    {
+      "id": "1",
+      "title": "C++ Systems Engineer",
+      "location": "Remote",
+      "salary": "$120,000 — $150,000",
+      "timestamp": "2026-02-03T00:00:00Z",
+      "description": "Build high-performance services and libraries in modern C++.",
+      "tags": ["c++", "linux", "embedded"],
+      "fullDescription": "You will design and implement low-latency systems in C++ for our core platform. The role focuses on performance profiling, memory management, and stability across Linux environments. Experience with multithreaded systems and production debugging is required."
+    },
+    {
+      "id": "2",
+      "title": "Python Data Engineer",
+      "location": "Austin, TX",
+      "salary": "$105,000 — $135,000",
+      "timestamp": "2026-02-04T00:00:00Z",
+      "description": "Develop data pipelines and automation using Python.",
+      "tags": ["python"],
+      "fullDescription": "You will build and maintain data pipelines, validate datasets, and automate reporting. Strong Python skills and a focus on data quality are essential for this role."
+    },
+    {
+      "id": "3",
+      "title": "Modeling and Simulation Engineer",
+      "location": "Detroit, MI",
+      "salary": "$115,000 — $145,000",
+      "timestamp": "2026-02-06T00:00:00Z",
+      "description": "Create simulation models for control systems using Simulink.",
+      "tags": ["simulink", "matlab", "c++", "control-systems", "testing"],
+      "fullDescription": "You will build Simulink models for control algorithms and integrate them with C++ components. The role includes model validation, test harness development, and collaboration with embedded teams."
+    },
+    {
+      "id": "4",
+      "title": "Full Stack React Developer",
+      "location": "New York, NY",
+      "salary": "$125,000 — $155,000",
+      "timestamp": "2026-02-07T00:00:00Z",
+      "description": "Deliver user-facing features in React with Python-powered APIs.",
+      "tags": ["react", "javascript", "typescript", "python", "api"],
+      "fullDescription": "You will build responsive React interfaces and contribute to Python services that power the UI. The position requires experience with modern JavaScript tooling, REST APIs, and component-driven design."
+    },
+    {
+      "id": "5",
+      "title": "Autonomous Systems Developer",
+      "location": "Pittsburgh, PA",
+      "salary": "$140,000 — $175,000",
+      "timestamp": "2026-02-08T00:00:00Z",
+      "description": "Develop autonomy software that blends simulation, perception, and control.",
+      "tags": [
+        "c++",
+        "python",
+        "simulink",
+        "react",
+        "matlab",
+        "linux",
+        "rtos",
+        "computer-vision",
+        "sensor-fusion",
+        "robotics",
+        "control",
+        "safety",
+        "testing",
+        "ci-cd",
+        "git",
+        "docker",
+        "kubernetes",
+        "telemetry",
+        "optimization",
+        "planning"
+      ],
+      "fullDescription": "You will design autonomy software across simulation, perception, and planning. The role spans C++ and Python development, integrates Simulink models, and coordinates with UI teams building React tooling for ops dashboards."
+    },
+    {
+      "id": "6",
+      "title": "C++ Build Tools Engineer",
+      "location": "Seattle, WA",
+      "salary": "$110,000 — $140,000",
+      "timestamp": "2026-02-09T00:00:00Z",
+      "description": "Maintain build systems and tooling for large C++ codebases.",
+      "tags": ["c++", "cmake", "ci-cd", "tooling"],
+      "fullDescription": "You will improve build performance, manage toolchains, and maintain CI pipelines for C++ projects. Experience with CMake and automated testing workflows is required."
+    },
+    {
+      "id": "7",
+      "title": "Python Automation Engineer",
+      "location": "Remote",
+      "salary": "$100,000 — $130,000",
+      "timestamp": "2026-02-10T00:00:00Z",
+      "description": "Automate workflows and infrastructure tasks with Python.",
+      "tags": ["python", "scripting", "devops", "automation"],
+      "fullDescription": "You will develop automation scripts, integrate tooling, and support deployment workflows. The role focuses on reliable automation and clear documentation."
+    }
+  ]
+}

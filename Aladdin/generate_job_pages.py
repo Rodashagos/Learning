@@ -105,8 +105,14 @@ def main():
                 unique_tags.add(tag.strip())
     sorted_tags = sorted(unique_tags, key=lambda t: t.lower())
     if sorted_tags:
-        tag_items = "\n".join(f"  <li>{t}</li>" for t in sorted_tags)
-        tag_list_html = f"<ul class=\"tag-list\">\n{tag_items}\n</ul>"
+        tag_items = [
+            "  <li><button class=\"tag-button is-active\" data-tag=\"all\">All</button></li>"
+        ]
+        tag_items.extend(
+            f"  <li><button class=\"tag-button\" data-tag=\"{t.strip().lower()}\">{t}</button></li>"
+            for t in sorted_tags
+        )
+        tag_list_html = f"<ul class=\"tag-list\">\n" + "\n".join(tag_items) + "\n</ul>"
     else:
         tag_list_html = "<p>No tags available</p>"
     
@@ -121,6 +127,8 @@ def main():
         href = f"job_pages/job_page_{jid}.html"
         # build tags markup for index listing
         job_tags = job.get('tags', []) or []
+        normalized_tags = [t.strip().lower() for t in job_tags if isinstance(t, str) and t.strip()]
+        data_tags = "|".join(normalized_tags)
         if job_tags:
             tags_html = ' '.join(f'<span class="tag">{t}</span>' for t in job_tags)
             tags_html = f'\n        <div class="job-tags">{tags_html}</div>'
@@ -128,7 +136,7 @@ def main():
             tags_html = ''
 
         entry = (
-            f'<a class="job-link" href="{href}">\n'
+            f'<a class="job-link" href="{href}" data-tags="{data_tags}">\n'
             f'  <div class="job-listing">\n'
             f'    <div class="job-title">{title}</div>\n'
             f'    <div class="job-location">{location}</div>\n'
