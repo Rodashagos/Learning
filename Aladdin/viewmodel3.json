@@ -8,7 +8,7 @@
       "timestamp": "2026-02-03T00:00:00Z",
       "description": "Build high-performance services and libraries in modern C++.",
       "tags": ["c++", "linux", "embedded"],
-      "fullDescription": "You will design and implement low-latency systems in C++ for our core platform. The role focuses on performance profiling, memory management, and stability across Linux environments. Experience with multithreaded systems and production debugging is required."
+      "fullDescription": "You will design and implement low-latency systems in C++ for our core platform, focusing on profiling, memory, and stability on Linux. Experience with multithreaded systems and production debugging is required.\n\nYou will partner with platform teams to review performance metrics and plan incremental improvements. Clear documentation and careful code reviews are expected."
     },
     {
       "id": "2",
@@ -18,7 +18,7 @@
       "timestamp": "2026-02-04T00:00:00Z",
       "description": "Develop data pipelines and automation using Python.",
       "tags": ["python"],
-      "fullDescription": "You will build and maintain data pipelines, validate datasets, and automate reporting. Strong Python skills and a focus on data quality are essential for this role."
+      "fullDescription": "You will build and maintain data pipelines, validate datasets, and automate reporting with Python. A strong focus on data quality and reproducibility is essential.\n\nYou will work with analysts to define schemas and monitoring checks. The role includes improving batch reliability and alerting."
     },
     {
       "id": "3",
@@ -28,7 +28,7 @@
       "timestamp": "2026-02-06T00:00:00Z",
       "description": "Create simulation models for control systems using Simulink.",
       "tags": ["simulink", "matlab", "c++", "control-systems", "testing"],
-      "fullDescription": "You will build Simulink models for control algorithms and integrate them with C++ components. The role includes model validation, test harness development, and collaboration with embedded teams."
+      "fullDescription": "You will build Simulink models for control algorithms and integrate them with C++ components. The role includes model validation, test harness development, and collaboration with embedded teams.\n\nYou will document model assumptions and support handoff to firmware. Experience with MATLAB workflows and testing is preferred."
     },
     {
       "id": "4",
@@ -38,7 +38,7 @@
       "timestamp": "2026-02-07T00:00:00Z",
       "description": "Deliver user-facing features in React with Python-powered APIs.",
       "tags": ["react", "javascript", "typescript", "python", "api"],
-      "fullDescription": "You will build responsive React interfaces and contribute to Python services that power the UI. The position requires experience with modern JavaScript tooling, REST APIs, and component-driven design."
+      "fullDescription": "You will build responsive React interfaces and contribute to Python services that power the UI. Experience with modern JavaScript tooling and REST APIs is required.\n\nYou will collaborate with design to refine components and accessibility. The role includes performance tuning and component reuse."
     },
     {
       "id": "5",
@@ -69,7 +69,7 @@
         "optimization",
         "planning"
       ],
-      "fullDescription": "You will design autonomy software across simulation, perception, and planning. The role spans C++ and Python development, integrates Simulink models, and coordinates with UI teams building React tooling for ops dashboards."
+      "fullDescription": "You will design autonomy software across simulation, perception, and planning, using C++ and Python. The role integrates Simulink models and coordinates with UI teams building React tooling.\n\nYou will support safety reviews and validation plans across the stack. Strong systems thinking and cross-team communication are essential."
     },
     {
       "id": "6",
@@ -79,7 +79,7 @@
       "timestamp": "2026-02-09T00:00:00Z",
       "description": "Maintain build systems and tooling for large C++ codebases.",
       "tags": ["c++", "cmake", "ci-cd", "tooling"],
-      "fullDescription": "You will improve build performance, manage toolchains, and maintain CI pipelines for C++ projects. Experience with CMake and automated testing workflows is required."
+      "fullDescription": "You will improve build performance, manage toolchains, and maintain CI pipelines for C++ projects. Experience with CMake and automated testing workflows is required.\n\nYou will collaborate with developers to streamline build configurations. The role includes triaging build failures and improving reliability."
     },
     {
       "id": "7",
@@ -89,7 +89,207 @@
       "timestamp": "2026-02-10T00:00:00Z",
       "description": "Automate workflows and infrastructure tasks with Python.",
       "tags": ["python", "scripting", "devops", "automation"],
-      "fullDescription": "You will develop automation scripts, integrate tooling, and support deployment workflows. The role focuses on reliable automation and clear documentation."
+      "fullDescription": "You will develop automation scripts, integrate tooling, and support deployment workflows with Python. The role focuses on reliable automation and clear documentation.\n\nYou will partner with operations to standardize runbooks and alerts. Experience with scripting and tooling support is important."
+    },
+    {
+      "id": "8",
+      "title": "C++ Platform Engineer",
+      "location": "Remote",
+      "salary": "$125,000 - $155,000",
+      "timestamp": "2026-02-11T00:00:00Z",
+      "description": "Scale core platform services written in C++.",
+      "tags": ["c++", "linux", "ci-cd", "git"],
+      "fullDescription": "You will enhance platform performance, improve build pipelines, and harden reliability for C++ services running on Linux. The role includes profiling and deployment coordination.\n\nYou will collaborate with release teams to reduce downtime and improve observability. Experience with CI/CD and source control is expected."
+    },
+    {
+      "id": "9",
+      "title": "Python API Developer",
+      "location": "Chicago, IL",
+      "salary": "$110,000 - $140,000",
+      "timestamp": "2026-02-12T00:00:00Z",
+      "description": "Build Python APIs for internal and external clients.",
+      "tags": ["python", "api", "testing"],
+      "fullDescription": "You will implement REST endpoints, add test coverage, and collaborate on API contracts with frontend teams. The role emphasizes clean interfaces and reliability.\n\nYou will help define versioning and monitoring for critical services. Experience with Python service frameworks is helpful."
+    },
+    {
+      "id": "10",
+      "title": "React UI Engineer",
+      "location": "Boston, MA",
+      "salary": "$115,000 - $145,000",
+      "timestamp": "2026-02-13T00:00:00Z",
+      "description": "Deliver modern React interfaces for core products.",
+      "tags": ["react", "javascript", "typescript"],
+      "fullDescription": "You will build reusable components, improve UI performance, and partner with design to ship polished experiences. The role focuses on React best practices.\n\nYou will help define component standards and testing strategies. Attention to accessibility and layout quality is expected."
+    },
+    {
+      "id": "11",
+      "title": "Simulink Controls Specialist",
+      "location": "Detroit, MI",
+      "salary": "$120,000 - $150,000",
+      "timestamp": "2026-02-14T00:00:00Z",
+      "description": "Develop control models and test harnesses in Simulink.",
+      "tags": ["simulink", "matlab", "control-systems", "testing"],
+      "fullDescription": "You will create Simulink models, validate results against requirements, and improve automated testing coverage. The role supports control system verification.\n\nYou will coordinate with systems engineers to track model updates. Documentation and traceability are key."
+    },
+    {
+      "id": "12",
+      "title": "Robotics Software Engineer",
+      "location": "San Jose, CA",
+      "salary": "$135,000 - $170,000",
+      "timestamp": "2026-02-15T00:00:00Z",
+      "description": "Build robotics software for perception and control.",
+      "tags": ["c++", "robotics", "sensor-fusion", "control"],
+      "fullDescription": "You will implement robotics pipelines in C++ with a focus on sensor fusion, control loops, and reliability. The role covers integration and testing.\n\nYou will collaborate with hardware teams to validate behavior. Strong debugging skills are required."
+    },
+    {
+      "id": "13",
+      "title": "DevOps Automation Engineer",
+      "location": "Denver, CO",
+      "salary": "$115,000 - $145,000",
+      "timestamp": "2026-02-16T00:00:00Z",
+      "description": "Automate infrastructure workflows with Python and CI/CD.",
+      "tags": ["python", "devops", "automation", "ci-cd", "docker", "kubernetes"],
+      "fullDescription": "You will build automation tooling, improve deployment workflows, and manage containerized services at scale. The role includes CI/CD enhancements.\n\nYou will partner with platform teams to standardize environments and reduce toil. Experience with Docker and Kubernetes is required."
+    },
+    {
+      "id": "14",
+      "title": "Embedded Firmware Engineer",
+      "location": "Phoenix, AZ",
+      "salary": "$105,000 - $135,000",
+      "timestamp": "2026-02-17T00:00:00Z",
+      "description": "Develop firmware for embedded devices in C++.",
+      "tags": ["c++", "embedded", "rtos", "testing"],
+      "fullDescription": "You will write firmware for embedded targets, validate behavior on RTOS platforms, and support integration testing. The role emphasizes reliability and correctness.\n\nYou will work with hardware teams to debug edge cases. Experience with embedded tooling is preferred."
+    },
+    {
+      "id": "15",
+      "title": "Telemetry Data Engineer",
+      "location": "Remote",
+      "salary": "$110,000 - $140,000",
+      "timestamp": "2026-02-18T00:00:00Z",
+      "description": "Design telemetry pipelines and analytics workflows.",
+      "tags": ["python", "telemetry", "optimization", "planning"],
+      "fullDescription": "You will build telemetry ingestion workflows and optimize data processing to support planning systems. The role focuses on performance and data quality.\n\nYou will collaborate with robotics teams to define signals and metrics. Experience with pipeline monitoring is helpful."
+    },
+    {
+      "id": "16",
+      "title": "Front-End Platform Engineer",
+      "location": "New York, NY",
+      "salary": "$120,000 - $150,000",
+      "timestamp": "2026-02-19T00:00:00Z",
+      "description": "Create shared UI tooling for React applications.",
+      "tags": ["react", "javascript", "api", "testing"],
+      "fullDescription": "You will build shared components, improve API integration, and strengthen frontend test coverage. The role supports multiple React applications.\n\nYou will define reusable patterns and document component usage. Experience with testing frameworks is expected."
+    },
+    {
+      "id": "17",
+      "title": "Build and Release Engineer",
+      "location": "Seattle, WA",
+      "salary": "$115,000 - $145,000",
+      "timestamp": "2026-02-20T00:00:00Z",
+      "description": "Own build tooling and release automation for C++ projects.",
+      "tags": ["cmake", "tooling", "ci-cd", "git"],
+      "fullDescription": "You will improve build tooling, streamline releases, and support CI pipelines for multi-platform codebases. The role focuses on repeatable releases.\n\nYou will collaborate with developers to reduce build times and failures. Attention to detail and scripting skills are important."
+    },
+    {
+      "id": "18",
+      "title": "Simulation Tooling Developer",
+      "location": "Detroit, MI",
+      "salary": "$110,000 - $140,000",
+      "timestamp": "2026-02-21T00:00:00Z",
+      "description": "Build tooling around Simulink workflows.",
+      "tags": ["simulink", "matlab", "python", "testing"],
+      "fullDescription": "You will create automation around Simulink models and improve testing and reporting pipelines. The role supports simulation workflows.\n\nYou will partner with modeling teams to standardize inputs and outputs. Experience with MATLAB and Python automation is useful."
+    },
+    {
+      "id": "19",
+      "title": "Safety Systems Engineer",
+      "location": "Columbus, OH",
+      "salary": "$125,000 - $155,000",
+      "timestamp": "2026-02-22T00:00:00Z",
+      "description": "Define and validate safety requirements for control systems.",
+      "tags": ["safety", "control", "testing", "c++"],
+      "fullDescription": "You will assess safety requirements, review control code, and build validation strategies for critical systems. The role includes compliance and testing.\n\nYou will coordinate with engineering leads to document safety cases. Clear communication and rigor are required."
+    },
+    {
+      "id": "20",
+      "title": "Autonomy Planning Engineer",
+      "location": "Pittsburgh, PA",
+      "salary": "$135,000 - $170,000",
+      "timestamp": "2026-02-23T00:00:00Z",
+      "description": "Develop planning algorithms for autonomous systems.",
+      "tags": ["planning", "optimization", "robotics", "python"],
+      "fullDescription": "You will implement planning algorithms, run simulations, and optimize decision-making pipelines. The role blends research with production implementation.\n\nYou will work with robotics teams to evaluate performance metrics and edge cases. Experience with Python tooling is preferred."
+    },
+    {
+      "id": "21",
+      "title": "Computer Vision Engineer",
+      "location": "San Jose, CA",
+      "salary": "$130,000 - $165,000",
+      "timestamp": "2026-02-24T00:00:00Z",
+      "description": "Build vision pipelines for robotics applications.",
+      "tags": ["computer-vision", "python", "robotics"],
+      "fullDescription": "You will develop computer vision models and integrate perception outputs into robotics stacks. The role includes dataset evaluation and deployment.\n\nYou will collaborate with robotics engineers to validate performance in the field. Strong Python skills are required."
+    },
+    {
+      "id": "22",
+      "title": "Infrastructure Automation Engineer",
+      "location": "Remote",
+      "salary": "$110,000 - $140,000",
+      "timestamp": "2026-02-25T00:00:00Z",
+      "description": "Automate infrastructure operations with Python tooling.",
+      "tags": ["automation", "scripting", "devops", "python"],
+      "fullDescription": "You will implement automation scripts, standardize workflows, and improve operational efficiency. The role focuses on reliable infrastructure operations.\n\nYou will work with DevOps teams to reduce manual tasks and improve monitoring. Experience with scripting and tooling is expected."
+    },
+    {
+      "id": "23",
+      "title": "C++ Performance Engineer",
+      "location": "Austin, TX",
+      "salary": "$125,000 - $155,000",
+      "timestamp": "2026-02-26T00:00:00Z",
+      "description": "Profile and optimize C++ services for performance.",
+      "tags": ["c++", "linux", "optimization", "tooling"],
+      "fullDescription": "You will profile C++ services, reduce latency, and improve instrumentation tooling. The role focuses on performance and diagnostics.\n\nYou will collaborate with platform teams to identify bottlenecks and regressions. Strong Linux debugging skills are helpful."
+    },
+    {
+      "id": "24",
+      "title": "API Integration Engineer",
+      "location": "Chicago, IL",
+      "salary": "$105,000 - $135,000",
+      "timestamp": "2026-02-27T00:00:00Z",
+      "description": "Integrate internal and external APIs using Python.",
+      "tags": ["api", "python", "testing", "git"],
+      "fullDescription": "You will implement integrations, expand test coverage, and collaborate on API lifecycle management. The role focuses on reliable Python services.\n\nYou will coordinate with partners to manage versioning and rollouts. Experience with automated testing is expected."
+    },
+    {
+      "id": "25",
+      "title": "React Dashboard Developer",
+      "location": "Boston, MA",
+      "salary": "$115,000 - $145,000",
+      "timestamp": "2026-02-28T00:00:00Z",
+      "description": "Create React dashboards for telemetry and ops.",
+      "tags": ["react", "typescript", "telemetry"],
+      "fullDescription": "You will build React dashboards for telemetry insights and optimize data visualization flows. The role emphasizes clarity and performance.\n\nYou will collaborate with backend teams to define data contracts. Experience with TypeScript and UI testing is helpful."
+    },
+    {
+      "id": "26",
+      "title": "Controls Validation Engineer",
+      "location": "Detroit, MI",
+      "salary": "$115,000 - $145,000",
+      "timestamp": "2026-03-01T00:00:00Z",
+      "description": "Validate control systems with Simulink and C++.",
+      "tags": ["control-systems", "testing", "simulink", "c++"],
+      "fullDescription": "You will validate control systems, write test harnesses, and collaborate with modeling teams. The role focuses on verification and traceability.\n\nYou will document results and support integration with C++ components. Experience with Simulink testing is preferred."
+    },
+    {
+      "id": "27",
+      "title": "Platform Reliability Engineer",
+      "location": "Remote",
+      "salary": "$120,000 - $150,000",
+      "timestamp": "2026-03-02T00:00:00Z",
+      "description": "Improve reliability of containerized platforms.",
+      "tags": ["ci-cd", "docker", "kubernetes", "linux", "git"],
+      "fullDescription": "You will harden reliability practices, improve CI/CD workflows, and manage containerized services. The role focuses on uptime and incident prevention.\n\nYou will develop runbooks and automate recovery procedures. Experience with Docker and Kubernetes is expected."
     }
   ]
 }
