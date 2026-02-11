@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Listings</title>
+  <link rel="stylesheet" href="job-styles.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+    
+    .container {
+      background-color: #eef2ff;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    
+    .job-listing {
+      background-color: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .job-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .job-listing:hover {
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    }
+    .job-title {
+      font-size: 1.5em;
+      color: #092685;
+      margin-bottom: 8px;
+    }
+    
+    .job-location {
+      color: #666;
+      font-size: 0.95em;
+      margin-bottom: 12px;
+    }
+    
+    .job-description {
+      color: #555;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Job Listings</h1>
+
+{{jobListings}}
+
+</div>
+</body>
+</html>

@@ -8,6 +8,7 @@ def main():
     base = Path(__file__).parent
     vm_path = base / "viewmodel.json"
     template_path = base / "job_page_template.html"
+    index_template_path = base / "index_template.html"
 
     out_dir = base / "job_pages"
     # remove existing output directory (and its contents) then recreate
@@ -21,6 +22,10 @@ def main():
 
     if not template_path.exists():
         print(f"Template not found at: {template_path}")
+        return
+
+    if not index_template_path.exists():
+        print(f"Index template not found at: {index_template_path}")
         return
 
     with vm_path.open("r", encoding="utf-8") as f:
@@ -85,53 +90,46 @@ def main():
         out_path.write_text(out_html, encoding="utf-8")
         print(f"Wrote {out_path.name}")
 
-    # Update index.html to reflect generated job pages
+    # Generate index.html from index_template.html
     index_path = base / "index.html"
     if index_path.exists():
-        index_text = index_path.read_text(encoding="utf-8")
-        marker = '<h1>Job Listings</h1>'
-        mpos = index_text.find(marker)
-        if mpos == -1:
-            print("Could not find job listings marker in index.html; skipping update")
-            return
+        index_path.unlink()
+    
+    index_template_text = index_template_path.read_text(encoding="utf-8")
+    
+    listings = []
+    for job in jobs:
+        jid = job.get('id')
+        if not jid:
+            continue
+        title = job.get('title', '')
+        location = job.get('location', '')
+        desc = job.get('description', '')
+        href = f"job_pages/job_page_{jid}.html"
+        # build tags markup for index listing
+        job_tags = job.get('tags', []) or []
+        if job_tags:
+            tags_html = ' '.join(f'<span class="tag">{t}</span>' for t in job_tags)
+            tags_html = f'\n        <div class="job-tags">{tags_html}</div>'
+        else:
+            tags_html = ''
 
-        start = mpos + len(marker)
-        body_index = index_text.rfind('</body>')
-        container_close = index_text.rfind('</div>', 0, body_index)
-        head = index_text[:start]
-        tail = index_text[container_close:]
+        entry = (
+            f'<a class="job-link" href="{href}">\n'
+            f'  <div class="job-listing">\n'
+            f'    <div class="job-title">{title}</div>\n'
+            f'    <div class="job-location">{location}</div>\n'
+            f'    <div class="job-description">{desc}</div>{tags_html}\n'
+            f'  </div>\n'
+            f'</a>'
+        )
+        listings.append(entry)
 
-        listings = []
-        for job in jobs:
-            jid = job.get('id')
-            if not jid:
-                continue
-            title = job.get('title', '')
-            location = job.get('location', '')
-            desc = job.get('description', '')
-            href = f"job_pages/job_page_{jid}.html"
-            # build tags markup for index listing
-            job_tags = job.get('tags', []) or []
-            if job_tags:
-                tags_html = ' '.join(f'<span class="tag">{t}</span>' for t in job_tags)
-                tags_html = f'\n        <div class="job-tags">{tags_html}</div>'
-            else:
-                tags_html = ''
-
-            entry = (
-                f'<a class="job-link" href="{href}">\n'
-                f'  <div class="job-listing">\n'
-                f'    <div class="job-title">{title}</div>\n'
-                f'    <div class="job-location">{location}</div>\n'
-                f'    <div class="job-description">{desc}</div>{tags_html}\n'
-                f'  </div>\n'
-                f'</a>'
-            )
-            listings.append(entry)
-
-        new_index = head + '\n\n' + '\n\n'.join(listings) + '\n\n' + tail
-        index_path.write_text(new_index, encoding='utf-8')
-        print('Updated index.html with current job listings')
+    job_listings_html = '\n\n'.join(listings) if listings else '<!-- No job listings available -->'
+    
+    new_index = index_template_text.replace("{{jobListings}}", job_listings_html)
+    index_path.write_text(new_index, encoding='utf-8')
+    print('Generated index.html from template')
 
 
 if __name__ == "__main__":
