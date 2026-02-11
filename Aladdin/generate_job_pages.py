@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 import shutil
+from datetime import datetime
 
 
 def main():
@@ -26,6 +27,9 @@ def main():
         data = json.load(f)
 
     jobs = data.get("jobs", [])
+    
+    # Sort jobs by timestamp (newest first)
+    jobs.sort(key=lambda job: job.get("timestamp", ""), reverse=True)
 
     template_text = template_path.read_text(encoding="utf-8")
 
@@ -38,6 +42,18 @@ def main():
         title = job.get("title", "")
         location = job.get("location", "")
         salary = job.get("salary", "")
+        timestamp = job.get("timestamp", "")
+        
+        # Format timestamp for display (convert ISO format to readable date)
+        if timestamp:
+            # Parse ISO format and display as "Month Day, Year"
+            try:
+                dt = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
+                formatted_timestamp = dt.strftime("%B %d, %Y")
+            except:
+                formatted_timestamp = timestamp
+        else:
+            formatted_timestamp = "Date not specified"
 
         # build full description html from paragraphs
         full = job.get("fullDescription") or job.get("description") or ""
@@ -58,6 +74,7 @@ def main():
         out_html = template_text.replace("{{title}}", title)
         out_html = out_html.replace("{{location}}", location)
         out_html = out_html.replace("{{salary}}", salary)
+        out_html = out_html.replace("{{timestamp}}", formatted_timestamp)
         out_html = out_html.replace("{{fullDescription}}", full_html)
         out_html = out_html.replace("{{tags}}", tags_html)
 
