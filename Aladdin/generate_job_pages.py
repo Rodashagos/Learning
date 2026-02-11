@@ -97,20 +97,28 @@ def main():
     
     index_template_text = index_template_path.read_text(encoding="utf-8")
 
-    # Build unique tag list for sidebar
-    unique_tags = set()
+    # Build unique tag list for sidebar with counts
+    tag_counts = {}
+    tag_display = {}
     for job in jobs:
         for tag in job.get("tags", []) or []:
-            if isinstance(tag, str) and tag.strip():
-                unique_tags.add(tag.strip())
-    sorted_tags = sorted(unique_tags, key=lambda t: t.lower())
+            if not isinstance(tag, str):
+                continue
+            cleaned = tag.strip()
+            if not cleaned:
+                continue
+            normalized = cleaned.lower()
+            tag_counts[normalized] = tag_counts.get(normalized, 0) + 1
+            tag_display.setdefault(normalized, cleaned)
+
+    sorted_tags = sorted(tag_display.items(), key=lambda item: item[1].lower())
     if sorted_tags:
         tag_items = [
-            "  <li><button class=\"tag-button is-active\" data-tag=\"all\">All</button></li>"
+            f"  <li><button class=\"tag-button is-active\" data-tag=\"all\">All ({len(jobs)})</button></li>"
         ]
         tag_items.extend(
-            f"  <li><button class=\"tag-button\" data-tag=\"{t.strip().lower()}\">{t}</button></li>"
-            for t in sorted_tags
+            f"  <li><button class=\"tag-button\" data-tag=\"{normalized}\">{label} ({tag_counts.get(normalized, 0)})</button></li>"
+            for normalized, label in sorted_tags
         )
         tag_list_html = f"<ul class=\"tag-list\">\n" + "\n".join(tag_items) + "\n</ul>"
     else:
