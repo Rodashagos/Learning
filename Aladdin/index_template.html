@@ -179,7 +179,14 @@
     if (searchInput) {
       searchInput.addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
-          console.log(searchInput.value);
+          var searchTerm = searchInput.value.toLowerCase().trim();
+          var jobLinks = document.querySelectorAll(".job-link");
+          
+          jobLinks.forEach(function (link) {
+            var fullDescription = link.getAttribute("data-description") || "";
+            var shouldShow = !searchTerm || fullDescription.toLowerCase().indexOf(searchTerm) !== -1;
+            link.classList.toggle("is-hidden", !shouldShow);
+          });
         }
       });
     }

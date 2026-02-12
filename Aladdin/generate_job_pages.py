@@ -132,6 +132,7 @@ def main():
         title = job.get('title', '')
         location = job.get('location', '')
         desc = job.get('description', '')
+        full_desc = job.get('fullDescription', '')
         href = f"job_pages/job_page_{jid}.html"
         # build tags markup for index listing
         job_tags = job.get('tags', []) or []
@@ -144,7 +145,7 @@ def main():
             tags_html = ''
 
         entry = (
-            f'<a class="job-link" href="{href}" data-tags="{data_tags}">\n'
+            f'<a class="job-link" href="{href}" data-tags="{data_tags}" data-description="{full_desc}">\n'
             f'  <div class="job-listing">\n'
             f'    <div class="job-title">{title}</div>\n'
             f'    <div class="job-location">{location}</div>\n'
