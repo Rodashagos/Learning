@@ -1,9 +1,9 @@
 body { font-family: Arial, sans-serif; background:#f5f5f5; padding:20px; }
 .container { max-width:800px; margin:0 auto; background:#fff; padding:24px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.08); }
 h1 { color:#092685; margin-bottom:8px; }
-.meta { color:#666; margin-bottom:8px; }
-.posted-date { color:#666; margin-bottom:8px;}
-.salary { color:#333; font-weight:600; margin-bottom:8px; }
+.meta { color:#666; margin-bottom:8px; display:inline-block; margin-right:16px; }
+.posted-date { color:#666; margin-bottom:8px; display:inline-block; margin-right:16px; }
+.salary { color:#333; margin-bottom:8px; display:inline-block; }
 p { color:#444; line-height:1.6; margin-bottom:12px; }
 a.back { display:inline-block; margin-top:18px; color:#092685; text-decoration:none; }
 /* Tag styles: rectangular pills with rounded corners */
