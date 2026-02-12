@@ -115,7 +115,7 @@
   <div class="container">
     <h1>Job Listings</h1>
     <div class="search-box">
-      <input type="text" class="search-input" placeholder="Search jobs..." id="searchInput">
+      <input type="text" class="search-input" placeholder="Search jobs: (example: C++, linux, ... )" id="searchInput">
     </div>
     <div class="layout">
       <main class="content">
@@ -132,13 +132,19 @@
     if (searchInput) {
       searchInput.addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
-          var searchTerm = searchInput.value.toLowerCase().trim();
+          var searchValue = searchInput.value.toLowerCase().trim();
+          var searchTerms = searchValue.split(", ").filter(function (term) {
+            return term.length > 0;
+          });
           var jobLinks = document.querySelectorAll(".job-link");
           
           jobLinks.forEach(function (link) {
             var searchableContent = link.getAttribute("data-searchable") || "";
-            var shouldShow = !searchTerm || searchableContent.toLowerCase().indexOf(searchTerm) !== -1;
-            link.classList.toggle("is-hidden", !shouldShow);
+            var contentLower = searchableContent.toLowerCase();
+            var matchesAllTerms = searchTerms.length === 0 || searchTerms.every(function (term) {
+              return contentLower.indexOf(term) !== -1;
+            });
+            link.classList.toggle("is-hidden", !matchesAllTerms);
           });
         }
       });
