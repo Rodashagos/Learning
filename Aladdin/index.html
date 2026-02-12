@@ -60,46 +60,6 @@
       align-items: flex-start;
     }
 
-    .sidebar {
-      width: 240px;
-      background-color: #ffffff;
-      border-radius: 8px;
-      padding: 16px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-    }
-
-    .tag-list {
-      list-style: none;
-    }
-
-    .tag-list li {
-      margin-bottom: 8px;
-    }
-
-    .tag-button {
-      width: 100%;
-      text-align: left;
-      background: #f3f4f6;
-      border: 1px solid #e5e7eb;
-      color: #374151;
-      padding: 8px 10px;
-      border-radius: 6px;
-      font-size: 0.95em;
-      cursor: pointer;
-    }
-
-    .tag-button:hover {
-      background: #e8ebf7;
-      border-color: #c7d2fe;
-    }
-
-    .tag-button.is-active {
-      background: #dbe7ff;
-      border-color: #9db5ff;
-      color: #0f2d86;
-      font-weight: 600;
-    }
-
     .content {
       flex: 1;
       min-width: 0;
@@ -148,10 +108,6 @@
       .layout {
         flex-direction: column;
       }
-
-      .sidebar {
-        width: 100%;
-      }
     }
   </style>
 </head>
@@ -162,41 +118,6 @@
       <input type="text" class="search-input" placeholder="Search jobs..." id="searchInput">
     </div>
     <div class="layout">
-      <aside class="sidebar">
-        <ul class="tag-list">
-  <li><button class="tag-button is-active" data-tag="all">All (27)</button></li>
-  <li><button class="tag-button" data-tag="api">api (4)</button></li>
-  <li><button class="tag-button" data-tag="automation">automation (3)</button></li>
-  <li><button class="tag-button" data-tag="c++">c++ (10)</button></li>
-  <li><button class="tag-button" data-tag="ci-cd">ci-cd (6)</button></li>
-  <li><button class="tag-button" data-tag="cmake">cmake (2)</button></li>
-  <li><button class="tag-button" data-tag="computer-vision">computer-vision (2)</button></li>
-  <li><button class="tag-button" data-tag="control">control (3)</button></li>
-  <li><button class="tag-button" data-tag="control-systems">control-systems (3)</button></li>
-  <li><button class="tag-button" data-tag="devops">devops (3)</button></li>
-  <li><button class="tag-button" data-tag="docker">docker (3)</button></li>
-  <li><button class="tag-button" data-tag="embedded">embedded (2)</button></li>
-  <li><button class="tag-button" data-tag="git">git (5)</button></li>
-  <li><button class="tag-button" data-tag="javascript">javascript (3)</button></li>
-  <li><button class="tag-button" data-tag="kubernetes">kubernetes (3)</button></li>
-  <li><button class="tag-button" data-tag="linux">linux (5)</button></li>
-  <li><button class="tag-button" data-tag="matlab">matlab (4)</button></li>
-  <li><button class="tag-button" data-tag="optimization">optimization (4)</button></li>
-  <li><button class="tag-button" data-tag="planning">planning (3)</button></li>
-  <li><button class="tag-button" data-tag="python">python (12)</button></li>
-  <li><button class="tag-button" data-tag="react">react (5)</button></li>
-  <li><button class="tag-button" data-tag="robotics">robotics (4)</button></li>
-  <li><button class="tag-button" data-tag="rtos">rtos (2)</button></li>
-  <li><button class="tag-button" data-tag="safety">safety (2)</button></li>
-  <li><button class="tag-button" data-tag="scripting">scripting (2)</button></li>
-  <li><button class="tag-button" data-tag="sensor-fusion">sensor-fusion (2)</button></li>
-  <li><button class="tag-button" data-tag="simulink">simulink (5)</button></li>
-  <li><button class="tag-button" data-tag="telemetry">telemetry (3)</button></li>
-  <li><button class="tag-button" data-tag="testing">testing (10)</button></li>
-  <li><button class="tag-button" data-tag="tooling">tooling (3)</button></li>
-  <li><button class="tag-button" data-tag="typescript">typescript (3)</button></li>
-</ul>
-      </aside>
       <main class="content">
 
 <a class="job-link" href="job_pages/job_page_27.html" data-tags="ci-cd|docker|kubernetes|linux|git" data-description="You will harden reliability practices, improve CI/CD workflows, and manage containerized services. The role focuses on uptime and incident prevention.

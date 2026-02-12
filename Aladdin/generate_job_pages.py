@@ -158,7 +158,6 @@ def main():
     job_listings_html = '\n\n'.join(listings) if listings else '<!-- No job listings available -->'
     
     new_index = index_template_text.replace("{{jobListings}}", job_listings_html)
-    new_index = new_index.replace("{{tagList}}", tag_list_html)
     index_path.write_text(new_index, encoding='utf-8')
     print('Generated index.html from template')
 
