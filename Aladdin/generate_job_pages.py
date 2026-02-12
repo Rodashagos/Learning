@@ -133,11 +133,14 @@ def main():
         location = job.get('location', '')
         desc = job.get('description', '')
         full_desc = job.get('fullDescription', '')
+        salary = job.get('salary', '')
+        timestamp = job.get('timestamp', '')
         href = f"job_pages/job_page_{jid}.html"
         # build tags markup for index listing
         job_tags = job.get('tags', []) or []
         normalized_tags = [t.strip().lower() for t in job_tags if isinstance(t, str) and t.strip()]
         data_tags = "|".join(normalized_tags)
+        tags_str = " ".join(job_tags) if job_tags else ""
         if job_tags:
             tags_html = ' '.join(f'<span class="tag">{t}</span>' for t in job_tags)
             tags_html = f'\n        <div class="job-tags">{tags_html}</div>'
@@ -145,7 +148,7 @@ def main():
             tags_html = ''
 
         entry = (
-            f'<a class="job-link" href="{href}" data-tags="{data_tags}" data-description="{full_desc}">\n'
+            f'<a class="job-link" href="{href}" data-tags="{data_tags}" data-searchable="{title} {location} {desc} {full_desc} {salary} {timestamp} {tags_str}">\n'
             f'  <div class="job-listing">\n'
             f'    <div class="job-title">{title}</div>\n'
             f'    <div class="job-location">{location}</div>\n'
